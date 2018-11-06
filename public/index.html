@@ -100,7 +100,8 @@
         document.querySelector('#price').value = ''
         document.querySelector('#inventory').value = ''
         getInventory()
-      }).catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
     }
     // Retreive Product Info
     const getInventory = () => {
@@ -146,7 +147,8 @@
           document.querySelector('#totalRevenue').innerHTML = `Total Revenue: $${numberWithCommas(totalRevenue)}`
           document.querySelector('#stock_inventory').innerHTML = `Total Inventory: ${numberWithCommas(stock_inventory)}`
           Graph(nameArr, inventoryArr)
-        }).catch(e => console.log(e))
+        })
+        .catch(e => console.log(e))
     }
     // Delete Item
     document.addEventListener('click', e => {
