@@ -133,15 +133,13 @@
               <th>${item.product_name}</th>
               <th>${item.department_name}</th>
               <th>$ ${ numberWithCommas(item.price)}
-                <button class="btn btn-danger btn-sm" value=${item.id} id="downPriceBTN"><i class="fas fa-arrow-down"></i></button>
-                <button class="btn btn-warning btn-sm" value=${item.id} id="upPriceBTN"><i class="fas fa-arrow-up"></i></button>
               </th>
               <th>${ numberWithCommas(item.inventory)}
-                <button class="btn btn-outline-danger btn-sm" value=${item.id} id="downInventoryBTN"><i class="fas fa-arrow-down"></i></button>
-                <button class="btn btn-outline-warning btn-sm" value=${item.id} id="upInventoryBTN"><i class="fas fa-arrow-up"></i></button>
+                <button class="btn btn-warning btn-sm" value=${item.id} id="downInventoryBTN"><i class="fas fa-chevron-circle-down"></i></button>
+                <button class="btn btn-warning btn-sm" value=${item.id} id="upInventoryBTN"><i class="fas fa-chevron-circle-up"></i></button>
               </th>
               <th>$${ numberWithCommas(item.price * item.inventory)}</th>
-              <th><button class="btn btn-danger"  value=${item.id} id="dltBTN">Remove</button></th>
+              <th><button class="btn btn-danger"  value=${item.product_name} id="dltBTN">Remove</button></th>
             `
             document.querySelector('#searchResult').appendChild(tableItem)
           })
