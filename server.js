@@ -9,4 +9,4 @@ app.use(bodyParser.urlencoded({ encoded: true }))
 app.use(bodyParser.json())
 
 require('./routes/inventoryRoutes')(app)
-require('./models').sequelize.sync().then(() => app.listen(3050, () => console.log('http://localhost:3050')))
+require('./models').sequelize.sync({force:true}).then(() => app.listen(3050, () => console.log('http://localhost:3050')))

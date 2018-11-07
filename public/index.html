@@ -82,7 +82,7 @@
     const clearSearch = () => {
       fetch('/products', { method: 'DELETE' }).then(r => getInventory()).catch(e => console.log(e))
     }
-    //Add a Surfboard
+    //Add Product
     const addProduct = () => {
       event.preventDefault()
       fetch('/products', {
@@ -136,8 +136,6 @@
               <th>$ ${ numberWithCommas(item.price)}
               </th>
               <th>${ numberWithCommas(item.inventory)}
-                <button class="btn btn-warning btn-sm" value=${item.id} id="downInventoryBTN"><i class="fas fa-chevron-circle-down"></i></button>
-                <button class="btn btn-warning btn-sm" value=${item.id} id="upInventoryBTN"><i class="fas fa-chevron-circle-up"></i></button>
               </th>
               <th>$${ numberWithCommas(item.price * item.inventory)}</th>
               <th><button class="btn btn-danger"  value=${item.product_name} id="dltBTN">Remove</button></th>
@@ -156,32 +154,6 @@
         fetch(`/products/${e.target.value}`, {
           method: 'DELETE'
         }).then(r => getInventory()).catch(e => console.log(e))
-      }
-    })
-    // Update Product Inventory
-    document.addEventListener('click', e => {
-      if (e.target && e.target.id === "upInventoryBTN") {
-        var inventoryIncrease = 1
-        fetch(`/products/${e.target.value}`)
-          .then(r => r.json())
-          .then(r => {
-            fetch(`/products/${e.target.value}`, {
-              method: 'PUT',
-              headers: { "Content-Type": "application/json; charset=utf-8", },
-              body: JSON.stringify({ inventory: r.inventory + inventoryIncrease })
-            }).then(r => getInventory())
-          })
-      } else if (e.target && e.target.id === "downInventoryBTN") {
-        var inventoryDecrease = 1
-        fetch(`/products/${e.target.value}`)
-          .then(r => r.json())
-          .then(r => {
-            fetch(`/products/${e.target.value}`, {
-              method: 'PUT',
-              headers: { "Content-Type": "application/json; charset=utf-8", },
-              body: JSON.stringify({ inventory: r.inventory - inventoryDecrease })
-            }).then(r => getInventory())
-          })
       }
     })
     getInventory()
