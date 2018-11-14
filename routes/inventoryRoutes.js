@@ -12,7 +12,7 @@ module.exports = app => {
       .catch(e => console.log(e))
   })
   app.post('/products', (req, res) => {
-    db.products.findOrCreate(req.body)
+    db.products.create(req.body)
       .then(() => res.sendStatus(200))
       .catch(e => console.log(e))
   })
